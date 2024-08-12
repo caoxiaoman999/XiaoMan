@@ -109,6 +109,7 @@
     }  
   
     function startSpin() {  
+        currentIndex = path.indexOf(10); // 从“子”开始  
         spinInterval = setInterval(() => {  
             highlightItem(path[currentIndex]);  
             currentIndex = (currentIndex + 1) % path.length;  
