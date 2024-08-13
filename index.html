@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
+<head> <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>大六壬活时起课</title>
-    <style>
-        /* 样式保持不变 */ </style>
+    <style> /* 样式保持不变 */
+    </style>
 </head>
 <body>
 
@@ -20,44 +19,43 @@
 </div>
 
 <script>
-    // JavaScript代码进行优化
-    const items = document.querySelectorAll('.grid-item:not(.center)');
-    const button = document.querySelector('.random-button');
+    const ITEMS_SELECTOR = '.grid-item:not(.center)';
+    const BUTTON_SELECTOR = '.random-button'; const DELAY300;
+    const PATH = [109, 8, 6, 4, 0, 1, 2, 35, 7, 11];
+ const items = document.querySelectorAll(ITEMS_SELECTOR);
+    const button = document.querySelector(BUTTON_SELECTOR);
     let isSpinning = false;
     let spinInterval;
-    let currentIndex0;
-    const delay = 300;
-
-    const path = [10, 9, 8, 6, 4, 0, 1, 2, 35, 7, 11];
+    let currentIndex = 0;
 
     function clearHighlights() {
         items.forEach(item => {
             item.classList.remove('highlight');
-        }); }
-
-    function highlightItem(index) {
+        });
+    }
+ function highlightItem(index) {
         clearHighlights();
         items[index].classList.add('highlight');
     }
 
-    function startSpin() { currentIndex = path.indexOf(10);
+    function startSpin() {
+        currentIndex = PATH.indexOf(10);
         spinInterval = setInterval(() => {
-            highlightItem(path[currentIndex]);
-            currentIndex = (currentIndex + 1) % path.length;
-        }, delay); button.textContent = '停止';
+            highlightItem(PATH[currentIndex]);
+            currentIndex = (currentIndex + 1) % PATH.length; }, DELAY);
+        button.textContent = '停止';
         isSpinning = true;
     }
 
     function stopSpin() {
-        clearInterval(spinInterval);
-        isSpinning = false;
+        clearInterval(spinInterval); isSpinning = false;
         button.textContent = '开始';
-        // 可以在这里添加停止后的回调逻辑
     }
 
     button.addEventListener('click', () => {
         if (!isSpinning) {
-            startSpin(); } else {
+            startSpin();
+        } else {
             stopSpin();
         }
     });
