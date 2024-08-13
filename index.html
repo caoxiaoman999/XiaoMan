@@ -95,8 +95,7 @@
         let currentIndex = 0;
 
         const delay = 300;
-        const minDuration = 2000;
-        const maxDuration = 5000;
+        const duration = 9000; // 9秒
 
         function clearHighlights() {
             const highlighted = document.querySelector('.grid-item.highlight');
@@ -111,8 +110,7 @@
         }
 
         function startSpin() {
-            // 随机选择起始位置
-            currentIndex = Math.floor(Math.random() * path.length);
+            currentIndex = Math.floor(Math.random() * path.length); // 随机开始位置
             spinInterval = setInterval(() => {
                 highlightItem(path[currentIndex]);
                 currentIndex = (currentIndex + 1) % path.length;
@@ -121,12 +119,13 @@
             button.textContent = '抽取中...';
             button.disabled = true;
 
-            stopTimeout = setTimeout(stopSpin, Math.random() * (maxDuration - minDuration) + minDuration);
+            stopTimeout = setTimeout(stopSpin, duration);
         }
 
         function stopSpin() {
             clearInterval(spinInterval);
             clearTimeout(stopTimeout);
+            highlightItem(path[currentIndex]); // 确保停在当前索引的位置
             button.textContent = '开始';
             button.disabled = false;
         }
