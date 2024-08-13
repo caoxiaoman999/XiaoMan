@@ -111,7 +111,8 @@
         }
 
         function startSpin() {
-            currentIndex = path.indexOf(10);
+            // 随机选择起始位置
+            currentIndex = Math.floor(Math.random() * path.length);
             spinInterval = setInterval(() => {
                 highlightItem(path[currentIndex]);
                 currentIndex = (currentIndex + 1) % path.length;
