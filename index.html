@@ -87,51 +87,55 @@
 </div>
 
 <script>
-    const items = document.querySelectorAll('.grid-item:not(.center)');
-    const button = document.querySelector('.random-button');
-    let isSpinning = false;
-    let spinInterval;
-    let currentIndex = 0;
-    const delay = 300;
+    (function() {
+        const items = document.querySelectorAll('.grid-item:not(.center)');
+        const button = document.querySelector('.random-button');
+        const path = [10, 9, 8, 6, 4, 0, 1, 2, 3, 5, 7, 11];
+        let spinInterval, stopTimeout;
+        let currentIndex = 0;
 
-    // 正确的顺时针路径：子 -> 丑 -> 寅 -> 卯 -> 辰 -> 巳 -> 午 -> 未 -> 申 -> 酉 -> 戌 -> 亥  
-    const path = [10, 9, 8, 6, 4, 0, 1, 2, 3, 5, 7, 11];
+        const delay = 300;
+        const minDuration = 2000;
+        const maxDuration = 5000;
 
-    function clearHighlights() {
-        items.forEach(item => {
-            item.classList.remove('highlight');
-        });
-    }
-
-    function highlightItem(index) {
-        clearHighlights();
-        items[index].classList.add('highlight');
-    }
-
-    function startSpin() {
-        currentIndex = path.indexOf(10); // 从“子”开始
-        spinInterval = setInterval(() => {
-            highlightItem(path[currentIndex]);
-            currentIndex = (currentIndex + 1) % path.length;
-        }, delay);
-        button.textContent = '停止';
-        isSpinning = true;
-    }
-
-    function stopSpin() {
-        clearInterval(spinInterval);
-        isSpinning = false;
-        button.textContent = '开始';
-        // 停止后的回调逻辑
-    }
-
-    button.addEventListener('click', () => {
-        if (!isSpinning) {
-            startSpin();
-        } else {
-            stopSpin();
+        function clearHighlights() {
+            const highlighted = document.querySelector('.grid-item.highlight');
+            if (highlighted) {
+                highlighted.classList.remove('highlight');
+            }
         }
-    });
+
+        function highlightItem(index) {
+            clearHighlights();
+            items[index].classList.add('highlight');
+        }
+
+        function startSpin() {
+            currentIndex = path.indexOf(10);
+            spinInterval = setInterval(() => {
+                highlightItem(path[currentIndex]);
+                currentIndex = (currentIndex + 1) % path.length;
+            }, delay);
+
+            button.textContent = '抽取中...';
+            button.disabled = true;
+
+            stopTimeout = setTimeout(stopSpin, Math.random() * (maxDuration - minDuration) + minDuration);
+        }
+
+        function stopSpin() {
+            clearInterval(spinInterval);
+            clearTimeout(stopTimeout);
+            button.textContent = '开始';
+            button.disabled = false;
+        }
+
+        button.addEventListener('click', () => {
+            if (!spinInterval) {
+                startSpin();
+            }
+        });
+    })();
 </script>
 
 </body>
