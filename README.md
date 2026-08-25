@@ -36,6 +36,14 @@ XiaoMan/
 | [Spotify](Scripts/Spotify/spotify.plugin) | Spotify Premium 解锁 | [说明](Scripts/Spotify/README.md) |
 | [JinRiYouJia](Scripts/JinRiYouJia/JinRiYouJia.js) | 全国各省市油价查询 | [说明](Scripts/JinRiYouJia/README.md) |
 
+**脚本直链：**
+```
+# 网络诊断雷达（基础版）
+https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Scripts/NetWork/Network.js
+# 网络诊断雷达（增强版）
+https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Scripts/Network-Pro/Network-Pro.js
+```
+
 ## 📌 使用说明
 
 1. 进入对应脚本文件夹查看配置方法
