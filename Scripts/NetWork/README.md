@@ -1,11 +1,11 @@
-# Network-Pro（网络诊断雷达小组件）
+# Network（网络诊断雷达小组件）
 
 🛡️ 桌面小组件：网络诊断雷达（实时全量刷新 + 释放 IPv6 落地版），解锁落地出口的 IPv6 限制，适配双栈/纯 v6 代理节点。
 
 ## 脚本链接
 
 ```
-https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Scripts/NetWork/Network-Pro.js
+https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Scripts/NetWork/Network.js
 ```
 
 ## 使用方法（Egern 小组件）
