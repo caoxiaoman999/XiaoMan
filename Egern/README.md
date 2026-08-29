@@ -1,4 +1,4 @@
-# Egern 配置（小满的松鼠🐿️ 2.0）
+# Egern 配置（小满的松鼠🐿️ 2.1）
 
 小满的 Egern 2.0 配置，带详细中文注释，适合学习参考。
 
@@ -9,13 +9,13 @@
 ## 配置链接
 
 ```
-https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Egern/XiaoManEgern2.0.yaml
+https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Egern/XiaoManEgern2.1.yaml
 ```
 
 ## 使用方法
 
 1. 打开 **Egern** → 配置（Configuration）
-2. 导入 `XiaoManEgern2.0.yaml`（从 URL 导入或本地导入）
+2. 导入 `XiaoManEgern2.1.yaml`（从 URL 导入或本地导入）
 3. 确保已安装 CA 证书并信任（MITM 需要）
 4. 添加你的机场订阅 —— **必须添加**！
 
@@ -48,4 +48,4 @@ https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Egern/XiaoManEgern2.0
 ## 来源
 
 - TG频道: https://t.me/XiaoManWangMingTianYa
-- 最后更新时间: 2026-8-22 10:42
+- 最后更新时间: 2026-08-29 16:15

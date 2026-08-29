@@ -10,8 +10,8 @@
 
 ```
 XiaoMan/
-├── Egern/              # Egern 配置
-│   └── XiaoManEgern2.0.yaml
+├── Egern/              # Egern 2.1 配置
+│   └── XiaoManEgern2.1.yaml
 ├── Scripts/            # 脚本目录（每个脚本独立文件夹）
 │   ├── WeTalk/         # WeTalk 签到+视频
 │   ├── PingMe/         # PingMe 签到+视频
@@ -28,7 +28,7 @@ XiaoMan/
 
 | 脚本 | 说明 | 说明文档 |
 |------|------|---------|
-| [Egern配置](Egern/XiaoManEgern2.0.yaml) | Egern 2.0 完整注释配置 | [说明](Egern/README.md) |
+| [Egern配置](Egern/XiaoManEgern2.1.yaml) | Egern 2.1 完整注释配置 | [说明](Egern/README.md) |
 | [WeTalk](Scripts/WeTalk/WeTalk.js) | WeTalk 签到 + 视频奖励 | [说明](Scripts/WeTalk/README.md) |
 | [PingMe](Scripts/PingMe/PingMe.js) | PingMe 签到 + 视频奖励 | [说明](Scripts/PingMe/README.md) |
 | [NetWork](Scripts/NetWork/Network.js) | 网络诊断雷达（基础版） | [说明](Scripts/NetWork/README.md) |

@@ -1,7 +1,7 @@
 # TG频道: https://t.me/XiaoManWangMingTianYa
-# 最后更新时间: 2026-08-22 19:35
+# 最后更新时间: 2026-08-29 16:15
 # ============================================================
-# 小满的松鼠🐿️ 2.0 配置（Egern）
+# 小满的松鼠🐿️ 2.1 配置（Egern）
 # —— 带详细中文注释版 ——
 # ============================================================
 
@@ -31,25 +31,42 @@ include_all_networks: false       # 是否接管所有网络流量（关闭）
 include_apns: false               # 是否包含 APNs 推送流量
 include_cellular_services: false  # 是否包含蜂窝网络服务流量
 
-# ---- DNS 配置 ----
+# ---- DNS 配置（国内外分流）----
 dns:
-  bootstrap:                      # 引导 DNS（用于解析上游 DoH 服务器地址）
-  - system                        # 使用系统 DNS 作为引导
-  upstreams:                      # DNS 上游服务器组
-    Local-DNS:                    # 本地 DNS 组（国内 DoH + 公共 DNS）
-    - https://dns.alidns.com/dns-query      # 阿里 DNS（DoH）
+  bootstrap:                      # 引导 DNS（固定 IP，解析 DoH 服务器地址）
+  - 119.29.29.29                  # 腾讯 DNS
+  - 223.5.5.5                     # 阿里 DNS
+  - 1.1.1.1                       # Cloudflare DNS
+  upstreams:                       # DNS 上游服务器组
+    国内:                          # 国内 DNS 组（阿里 + 腾讯双备份）
+    - https://dns.alidns.com/dns-query      # 阿里 DoH
     - https://doh.pub/dns-query             # 腾讯 DoH
-    - 223.5.5.5                              # 阿里公共 DNS
-    - 119.29.29.29                           # 腾讯公共 DNS
-  forward:                        # DNS 转发规则
-  - domain_wildcard:
-      match: '*'                  # 所有域名
-      value: Local-DNS            # 全部走本地 DNS 组
+    海外:                          # 海外 DNS 组
+    - https://dns.google/dns-query          # Google DoH
+  forward:                        # DNS 转发规则（从上到下匹配）
+  - domain_suffix:                # Apple 域名走 bootstrap 直连（国内 CDN 快）
+      match: apple.com
+      value: bootstrap
+      disabled: false
+  - proxy_rule_set:               # 国外域名走 Google DoH（防 DNS 污染）
+      match: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Surge/Global/Global_All.list
+      value: 海外
+      disabled: false
+  - domain_wildcard:              # 其他域名走国内 DoH（速度快）
+      match: '*'
+      value: 国内
       disabled: false
   hosts:                          # 自定义 hosts 映射
     iosapps.itunes.apple.com:
     - hls.itunes.apple.com.mwcname.com       # iTunes 下载加速映射
-  public_ip_lookup_url: http://ip.ddnspod.com/   # 公网 IP 查询地址
+  public_ip_lookup_url: http://whatismyip.akamai.com/   # 公网 IP 查询地址
+
+# ---- 真实 IP 域名（不走 Fake IP）----
+real_ip_domains:
+- '*.lan'                         # 局域网
+- '*.push.apple.com'              # 苹果推送（需真实 IP）
+- speech.platform.bing.com        # 微软语音
+- doh.pub                         # 腾讯 DoH
 
 # ============================================================
 # 策略组（流量分组）
