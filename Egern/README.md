@@ -1,10 +1,10 @@
 # Egern 配置（小满的松鼠🐿️ 2.1）
 
-小满的 Egern 2.0 配置，带详细中文注释，适合学习参考。
+小满的 Egern 2.1 配置，带详细中文注释，适合学习参考。
 
 ## 配置文件
 
-[XiaoManEgern2.0.yaml](XiaoManEgern2.0.yaml) — 完整注释版配置
+[XiaoManEgern2.1.yaml](XiaoManEgern2.1.yaml) — 完整注释版配置
 
 ## 配置链接
 
@@ -32,11 +32,11 @@ https://raw.githubusercontent.com/CaoXiaoMann/XiaoMan/main/Egern/XiaoManEgern2.1
 ## 配置包含
 
 - **基础设置**：IPv4 代理端口、DNS 劫持、隧道模式
-- **DNS**：国内 DoH 加速（阿里/腾讯）
+- **DNS**：国内外 DNS 分流（国内阿里+腾讯双备份 / 海外 Google DoH 防污染）
 - **策略组**：PROXY、Telegram、ChatGPT、Emby、各地区节点组（自动筛选订阅节点）
 - **分流规则**：广告拦截（REJECT-DROP）、国内直连、国际应用指定策略组
 - **URL 重写**：google.cn → google.com 跳转
-- **脚本/小组件**：网络诊断雷达（需配合仓库 Scripts/NetWork/Network-Pro.js）
+- **脚本/小组件**：网络诊断雷达（NetWork/Network.js 基础版 + Network-Pro/Network-Pro.js 增强版）、今日油价（JinRiYouJia/JinRiYouJia.js）
 - **模块**：去广告（豆瓣/知乎/拼多多/京东/12306/B站等）、Spotify 会员、YouTube 隐藏 Shorts、Sub-Store、BoxJs 等
 
 ## 注意事项
